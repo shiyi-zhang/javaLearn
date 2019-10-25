@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <classPathEntry
+    location="/Users/kc/.m2/repository/mysql/mysql-connector-java/5.1.47/mysql-connector-java-5.1.47.jar"/>
+  <context id="MyBatis" targetRuntime="MyBatis3" defaultModelType="flat">
+    <!--覆盖生成XML文件-->
+    <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
+    <commentGenerator>
+      <property name="suppressDate" value="false"/>
+      <!-- 不生成注释 -->
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+      connectionURL="jdbc:mysql://localhost:3306/ma_cmcc?characterEncoding=utf8&amp;useSSL=false"
+      userId="root"
+      password="root"/>
+    <!--connectionURL="jdbc:mysql://101.132.168.53:3306/ma_cmcc?characterEncoding=utf8&amp;useSSL=false"-->
+    <!--userId="user"-->
+    <!--password="741!&quot;#GGyy"/>-->
+
+    <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+      <property name="forceBigDecimals" value="true"/>
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="org.zsy.repository.model"
+      targetProject="src/main/java">
+      <property name="enableSubPackages" value="true"/>
+      <property name="trimStrings" value="true"/>
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="org.zsy.repository.mapper"
+      targetProject="src/main/java">
+      <property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+
+    <javaClientGenerator targetPackage="org.zsy.repository.mapper"
+      targetProject="src/main/java" type="XMLMAPPER">
+      <property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+
+    <table tableName="app_channel_source" domainObjectName="User">
+      <!--enableCountByExample="false" enableUpdateByExample="false"
+      enableDeleteByExample="false" enableSelectByExample="false"
+      selectByExampleQueryId="false"-->
+    </table>
+    <table tableName="app_info" domainObjectName="AppInfo">
+    </table>
+    <table tableName="app_statistics_day" domainObjectName="AppStatisticsDay">
+    </table>
+    <table tableName="app_statistics_month" domainObjectName="AppStatisticsMonth">
+    </table>
+    <table tableName="app_user_draw" domainObjectName="AppUserDraw">
+    </table>
+    <table tableName="app_user_draw_brand" domainObjectName="AppUserDrawBrand">
+    </table>
+    <table tableName="app_user_draw_media_source" domainObjectName="AppUserDrawMediaSource">
+    </table>
+    <table tableName="app_user_draw_media_time" domainObjectName="AppUserDrawMediaTime">
+    </table>
+    <table tableName="app_user_draw_region" domainObjectName="AppUserDrawRegion">
+    </table>
+    <table tableName="app_user_draw_taste" domainObjectName="AppUserDrawTaste">
+    </table>
+    <table tableName="app_user_draw_type" domainObjectName="AppUserDrawType">
+    </table>
+    <table tableName="dmp_code_region" domainObjectName="DmpCodeRegion">
+    </table>
+    <table tableName="dmp_tag_dimension" domainObjectName="DmpTagDimension">
+    </table>
+    <table tableName="task_detail" domainObjectName="TaskDetail">
+    </table>
+    <table tableName="task_info" domainObjectName="TaskInfo">
+      <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="task_report" domainObjectName="TaskReport">
+    </table>
+    <table tableName="app_user_draw_family" domainObjectName="AppUserDrawFamily"></table>
+    <table tableName="app_user_draw_business" domainObjectName="AppUserDrawBusiness"></table>
+    <table tableName="app_user_draw_app_preferences" domainObjectName="AppUserDrawAppPreferences"></table>
+    <table tableName="app_user_draw_city_level" domainObjectName="AppUserDrawCityLevel"></table>
+    <table tableName="app_user_draw_region_rate" domainObjectName="AppUserDrawRegionRate"></table>
+    <table tableName="app_user_draw_consume" domainObjectName="AppUserDrawConsume"></table>
+    <table tableName="app_user_draw_credit_rate" domainObjectName="AppUserDrawCreditRate"></table>
+    <table tableName="app_user_draw_interest" domainObjectName="AppUserDrawInterest"></table>
+    <table tableName="app_user_draw_brand_rate" domainObjectName="AppUserDrawBrandRate"></table>
+    <table tableName="app_user_draw_worth" domainObjectName="AppUserDrawWorth"></table>
+    <table tableName="app_user_draw_annual_pay" domainObjectName="AppUserDrawAnnualPay"></table>
+    <table tableName="app_user_draw_edu" domainObjectName="AppUserDrawEdu"></table>
+    <table tableName="app_user_draw_system" domainObjectName="AppUserDrawSystem"></table>
+    <table tableName="app_user_draw_platform" domainObjectName="AppUserDrawPlatform"></table>
+    <table tableName="app_info_competitor" domainObjectName="AppInfoCompetitor"></table>
+    <table tableName="app_cat_statistics_month" domainObjectName="AppCatStatisticsMonth"></table>
+    <table tableName="app_cat_statistics_day" domainObjectName="AppCatStatisticsDay"></table>
+    <table tableName="app_user_draw_media_hot" domainObjectName="AppUserDrawMediaHot"></table>
+    <table tableName="task_report_age_sex" domainObjectName="TaskReportAgeSex"></table>
+    <table tableName="task_report_interest" domainObjectName="TaskReportInterest"></table>
+    <table tableName="task_report_media_time" domainObjectName="TaskReportMediaTime"></table>
+    <table tableName="task_report_statistics_month" domainObjectName="TaskReportStatisticsMonth"></table>
+    <table tableName="task_report_statistics_day" domainObjectName="TaskReportStatisticsDay"></table>
+    <table tableName="task_report_brand_rate" domainObjectName="TaskReportBrandRate"></table>
+    <table tableName="task_report_media_hot" domainObjectName="TaskReportMediaHot"></table>
+    <table tableName="task_report_region_rate" domainObjectName="TaskReportRegionRate"></table>
+    <table tableName="task_report_app_preferences" domainObjectName="TaskReportAppPreferences"></table>
+    <table tableName="task_report_credit_rate" domainObjectName="TaskReportCreditRate"></table>
+    <table tableName="task_report_consume" domainObjectName="TaskReportConsume"></table>
+    <table tableName="task_report_consume_app" domainObjectName="TaskReportConsumeApp"></table>
+    <table tableName="task_report_platform" domainObjectName="TaskReportPlatform"></table>
+    <table tableName="task_report_system" domainObjectName="TaskReportSystem"></table>
+    <table tableName="app_user_draw_vocation" domainObjectName="AppUserDrawVocation"></table>
+    <table tableName="task_report_vocation" domainObjectName="TaskReportVocation"></table>
+    <table tableName="task_report_annual_pay" domainObjectName="TaskReportAnnualPay"></table>
+    <table tableName="user" domainObjectName="User">
+    </table>
+
+  </context>
+</generatorConfiguration>
