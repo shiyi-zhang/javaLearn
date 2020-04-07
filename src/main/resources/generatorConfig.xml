@@ -17,12 +17,13 @@
     </commentGenerator>
 
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-      connectionURL="jdbc:mysql://localhost:3306/ma_cmcc?characterEncoding=utf8&amp;useSSL=false"
-      userId="root"
-      password="root"/>
-    <!--connectionURL="jdbc:mysql://101.132.168.53:3306/ma_cmcc?characterEncoding=utf8&amp;useSSL=false"-->
-    <!--userId="user"-->
-    <!--password="741!&quot;#GGyy"/>-->
+
+    connectionURL="jdbc:mysql://39.98.139.30:3306/ma-sichuan-test?characterEncoding=utf8&amp;useSSL=false"
+    userId="user"
+    password="741!'#GGyy"/>
+    <!--connectionURL="jdbc:mysql://localhost:3306/ma_cmcc?characterEncoding=utf8&amp;useSSL=false"-->
+    <!--userId="root"-->
+    <!--password="root"/>-->
 
     <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
       <property name="forceBigDecimals" value="true"/>
@@ -105,6 +106,7 @@
     <table tableName="task_report_statistics_day" domainObjectName="TaskReportStatisticsDay"></table>
     <table tableName="task_report_brand_rate" domainObjectName="TaskReportBrandRate"></table>
     <table tableName="task_report_media_hot" domainObjectName="TaskReportMediaHot"></table>
+    <table tableName="task_report_region" domainObjectName="TaskReportRegion"></table>
     <table tableName="task_report_region_rate" domainObjectName="TaskReportRegionRate"></table>
     <table tableName="task_report_app_preferences" domainObjectName="TaskReportAppPreferences"></table>
     <table tableName="task_report_credit_rate" domainObjectName="TaskReportCreditRate"></table>
@@ -112,11 +114,25 @@
     <table tableName="task_report_consume_app" domainObjectName="TaskReportConsumeApp"></table>
     <table tableName="task_report_platform" domainObjectName="TaskReportPlatform"></table>
     <table tableName="task_report_system" domainObjectName="TaskReportSystem"></table>
+    <table tableName="task_report_edu" domainObjectName="TaskReportEdu"></table>
     <table tableName="app_user_draw_vocation" domainObjectName="AppUserDrawVocation"></table>
     <table tableName="task_report_vocation" domainObjectName="TaskReportVocation"></table>
     <table tableName="task_report_annual_pay" domainObjectName="TaskReportAnnualPay"></table>
+    <table tableName="task_timer_log" domainObjectName="TaskTimerLog"></table>
+    <table tableName="task_tid" domainObjectName="TaskTid">
+    </table>
     <table tableName="user" domainObjectName="User">
     </table>
+
+    <table tableName="app_info_ad" domainObjectName="AppInfoAd"/>
+    <table tableName="dmp_app_ad" domainObjectName="DmpAppAd"/>
+    <table tableName="task_info_detail_ad" domainObjectName="TaskInfoDetailAd"/>
+    <table tableName="task_info_detail_ad_attr" domainObjectName="TaskInfoDetailAdAttr"/>
+    <table tableName="task_info_detail_app" domainObjectName="TaskInfoDetailApp"/>
+    <table tableName="task_info_detail_crowd" domainObjectName="TaskInfoDetailCrowd"/>
+    <table tableName="task_info_detail_region" domainObjectName="TaskInfoDetailRegion"/>
+    <table tableName="task_report_contact_ratio" domainObjectName="TaskReportContactRatio"/>
+    <table tableName="task_report_overlap" domainObjectName="TaskReportOverlap"/>
 
   </context>
 </generatorConfiguration>

@@ -224,15 +224,17 @@ public class HuffmanUtil {
     }
 
     public static void main(String[] args) {
-        String oriStr = "850668963100040";
+        String oriStr = "JGMNWSBBQ6";
+         oriStr = "10010111110010100111101100001110";
         Map<Character, Integer> statistics = statistics(oriStr.toCharArray());
         String encodedBinariStr = encode(oriStr, statistics);
-        String decodedStr = decode(encodedBinariStr, statistics(encodedBinariStr.toCharArray()));
+        String decodedStr = decode(encodedBinariStr,statistics(oriStr.toCharArray()) );
 
         System.out.println("Original sstring: " + oriStr);
         System.out.println("Huffman encoed binary string: " + encodedBinariStr);
         System.out.println("decoded string from binariy string: " + decodedStr);
-        System.out.println("---------");
+//        System.out.println(new BigInteger(encodedBinariStr, 2).toString(10));
+//        System.out.println(new BigInteger(new BigInteger(encodedBinariStr, 2).toString(10), 10).toString(2));
 
 //
 //        System.out.println(oriStr);
@@ -259,10 +261,10 @@ public class HuffmanUtil {
 //        System.out.println("-----3----");
 
 //        oriStr=new BigInteger(tmp, 10).toString(2);
-        oriStr="11001111110000011111000100110111001010";
-        statistics = statistics(oriStr.toCharArray());
-        decodedStr= decode(oriStr, statistics);
-        System.out.println(decodedStr);
+//        oriStr="11001111110000011111000100110111001010";
+//        statistics = statistics(oriStr.toCharArray());
+//        decodedStr= decode(oriStr, statistics);
+//        System.out.println(decodedStr);
 
 
 

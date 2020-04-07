@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zsy.repository.mapper.TaskReportStatisticsMonthMapper">
+  <resultMap id="BaseResultMap" type="org.zsy.repository.model.TaskReportStatisticsMonth">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="get_time" jdbcType="DATE" property="getTime" />
+    <id column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
+    <result column="trend" jdbcType="INTEGER" property="trend" />
+    <result column="total_rank" jdbcType="INTEGER" property="totalRank" />
+    <result column="total_trend" jdbcType="INTEGER" property="totalTrend" />
+    <result column="pv" jdbcType="BIGINT" property="pv" />
+    <result column="uv" jdbcType="INTEGER" property="uv" />
+    <result column="nuv" jdbcType="INTEGER" property="nuv" />
+    <result column="keep" jdbcType="INTEGER" property="keep" />
+    <result column="active_rate" jdbcType="DECIMAL" property="activeRate" />
+    <result column="month_active_time" jdbcType="INTEGER" property="monthActiveTime" />
+    <result column="month_active_time_grow" jdbcType="VARCHAR" property="monthActiveTimeGrow" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="CREATED_TIME" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="UPDATED_TIME" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, get_time, app_id, rank, trend, total_rank, total_trend, pv, uv, nuv, keep, active_rate, 
+    month_active_time, month_active_time_grow, CREATED_BY, CREATED_TIME, UPDATED_BY, 
+    UPDATED_TIME
+  </sql>
+  <select id="selectByExample" parameterType="org.zsy.repository.model.TaskReportStatisticsMonthExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from task_report_statistics_month
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task_report_statistics_month
+    where id = #{id,jdbcType=INTEGER}
+      and get_time = #{getTime,jdbcType=DATE}
+      and app_id = #{appId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from task_report_statistics_month
+    where id = #{id,jdbcType=INTEGER}
+      and get_time = #{getTime,jdbcType=DATE}
+      and app_id = #{appId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.zsy.repository.model.TaskReportStatisticsMonthExample">
+    delete from task_report_statistics_month
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.zsy.repository.model.TaskReportStatisticsMonth">
+    insert into task_report_statistics_month (id, get_time, app_id, 
+      rank, trend, total_rank, 
+      total_trend, pv, uv, 
+      nuv, keep, active_rate, 
+      month_active_time, month_active_time_grow, CREATED_BY, 
+      CREATED_TIME, UPDATED_BY, UPDATED_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{getTime,jdbcType=DATE}, #{appId,jdbcType=VARCHAR}, 
+      #{rank,jdbcType=INTEGER}, #{trend,jdbcType=INTEGER}, #{totalRank,jdbcType=INTEGER}, 
+      #{totalTrend,jdbcType=INTEGER}, #{pv,jdbcType=BIGINT}, #{uv,jdbcType=INTEGER}, 
+      #{nuv,jdbcType=INTEGER}, #{keep,jdbcType=INTEGER}, #{activeRate,jdbcType=DECIMAL}, 
+      #{monthActiveTime,jdbcType=INTEGER}, #{monthActiveTimeGrow,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.zsy.repository.model.TaskReportStatisticsMonth">
+    insert into task_report_statistics_month
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="getTime != null">
+        get_time,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+      <if test="trend != null">
+        trend,
+      </if>
+      <if test="totalRank != null">
+        total_rank,
+      </if>
+      <if test="totalTrend != null">
+        total_trend,
+      </if>
+      <if test="pv != null">
+        pv,
+      </if>
+      <if test="uv != null">
+        uv,
+      </if>
+      <if test="nuv != null">
+        nuv,
+      </if>
+      <if test="keep != null">
+        keep,
+      </if>
+      <if test="activeRate != null">
+        active_rate,
+      </if>
+      <if test="monthActiveTime != null">
+        month_active_time,
+      </if>
+      <if test="monthActiveTimeGrow != null">
+        month_active_time_grow,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="getTime != null">
+        #{getTime,jdbcType=DATE},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="trend != null">
+        #{trend,jdbcType=INTEGER},
+      </if>
+      <if test="totalRank != null">
+        #{totalRank,jdbcType=INTEGER},
+      </if>
+      <if test="totalTrend != null">
+        #{totalTrend,jdbcType=INTEGER},
+      </if>
+      <if test="pv != null">
+        #{pv,jdbcType=BIGINT},
+      </if>
+      <if test="uv != null">
+        #{uv,jdbcType=INTEGER},
+      </if>
+      <if test="nuv != null">
+        #{nuv,jdbcType=INTEGER},
+      </if>
+      <if test="keep != null">
+        #{keep,jdbcType=INTEGER},
+      </if>
+      <if test="activeRate != null">
+        #{activeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="monthActiveTime != null">
+        #{monthActiveTime,jdbcType=INTEGER},
+      </if>
+      <if test="monthActiveTimeGrow != null">
+        #{monthActiveTimeGrow,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.zsy.repository.model.TaskReportStatisticsMonthExample" resultType="java.lang.Long">
+    select count(*) from task_report_statistics_month
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update task_report_statistics_month
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.getTime != null">
+        get_time = #{record.getTime,jdbcType=DATE},
+      </if>
+      <if test="record.appId != null">
+        app_id = #{record.appId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rank != null">
+        rank = #{record.rank,jdbcType=INTEGER},
+      </if>
+      <if test="record.trend != null">
+        trend = #{record.trend,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalRank != null">
+        total_rank = #{record.totalRank,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalTrend != null">
+        total_trend = #{record.totalTrend,jdbcType=INTEGER},
+      </if>
+      <if test="record.pv != null">
+        pv = #{record.pv,jdbcType=BIGINT},
+      </if>
+      <if test="record.uv != null">
+        uv = #{record.uv,jdbcType=INTEGER},
+      </if>
+      <if test="record.nuv != null">
+        nuv = #{record.nuv,jdbcType=INTEGER},
+      </if>
+      <if test="record.keep != null">
+        keep = #{record.keep,jdbcType=INTEGER},
+      </if>
+      <if test="record.activeRate != null">
+        active_rate = #{record.activeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.monthActiveTime != null">
+        month_active_time = #{record.monthActiveTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.monthActiveTimeGrow != null">
+        month_active_time_grow = #{record.monthActiveTimeGrow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdBy != null">
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null">
+        CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null">
+        UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedTime != null">
+        UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update task_report_statistics_month
+    set id = #{record.id,jdbcType=INTEGER},
+      get_time = #{record.getTime,jdbcType=DATE},
+      app_id = #{record.appId,jdbcType=VARCHAR},
+      rank = #{record.rank,jdbcType=INTEGER},
+      trend = #{record.trend,jdbcType=INTEGER},
+      total_rank = #{record.totalRank,jdbcType=INTEGER},
+      total_trend = #{record.totalTrend,jdbcType=INTEGER},
+      pv = #{record.pv,jdbcType=BIGINT},
+      uv = #{record.uv,jdbcType=INTEGER},
+      nuv = #{record.nuv,jdbcType=INTEGER},
+      keep = #{record.keep,jdbcType=INTEGER},
+      active_rate = #{record.activeRate,jdbcType=DECIMAL},
+      month_active_time = #{record.monthActiveTime,jdbcType=INTEGER},
+      month_active_time_grow = #{record.monthActiveTimeGrow,jdbcType=VARCHAR},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.repository.model.TaskReportStatisticsMonth">
+    update task_report_statistics_month
+    <set>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="trend != null">
+        trend = #{trend,jdbcType=INTEGER},
+      </if>
+      <if test="totalRank != null">
+        total_rank = #{totalRank,jdbcType=INTEGER},
+      </if>
+      <if test="totalTrend != null">
+        total_trend = #{totalTrend,jdbcType=INTEGER},
+      </if>
+      <if test="pv != null">
+        pv = #{pv,jdbcType=BIGINT},
+      </if>
+      <if test="uv != null">
+        uv = #{uv,jdbcType=INTEGER},
+      </if>
+      <if test="nuv != null">
+        nuv = #{nuv,jdbcType=INTEGER},
+      </if>
+      <if test="keep != null">
+        keep = #{keep,jdbcType=INTEGER},
+      </if>
+      <if test="activeRate != null">
+        active_rate = #{activeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="monthActiveTime != null">
+        month_active_time = #{monthActiveTime,jdbcType=INTEGER},
+      </if>
+      <if test="monthActiveTimeGrow != null">
+        month_active_time_grow = #{monthActiveTimeGrow,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and get_time = #{getTime,jdbcType=DATE}
+      and app_id = #{appId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.zsy.repository.model.TaskReportStatisticsMonth">
+    update task_report_statistics_month
+    set rank = #{rank,jdbcType=INTEGER},
+      trend = #{trend,jdbcType=INTEGER},
+      total_rank = #{totalRank,jdbcType=INTEGER},
+      total_trend = #{totalTrend,jdbcType=INTEGER},
+      pv = #{pv,jdbcType=BIGINT},
+      uv = #{uv,jdbcType=INTEGER},
+      nuv = #{nuv,jdbcType=INTEGER},
+      keep = #{keep,jdbcType=INTEGER},
+      active_rate = #{activeRate,jdbcType=DECIMAL},
+      month_active_time = #{monthActiveTime,jdbcType=INTEGER},
+      month_active_time_grow = #{monthActiveTimeGrow,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+      and get_time = #{getTime,jdbcType=DATE}
+      and app_id = #{appId,jdbcType=VARCHAR}
+  </update>
+</mapper>

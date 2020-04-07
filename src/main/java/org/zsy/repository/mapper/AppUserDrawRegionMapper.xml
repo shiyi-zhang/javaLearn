@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zsy.repository.mapper.AppUserDrawRegionMapper">
+  <resultMap id="BaseResultMap" type="org.zsy.repository.model.AppUserDrawRegion">
+    <id column="draw_id" jdbcType="VARCHAR" property="drawId" />
+    <id column="code" jdbcType="VARCHAR" property="code" />
+    <result column="rank" jdbcType="BIGINT" property="rank" />
+    <result column="trend" jdbcType="BIGINT" property="trend" />
+    <result column="total_rank" jdbcType="BIGINT" property="totalRank" />
+    <result column="total_trend" jdbcType="BIGINT" property="totalTrend" />
+    <result column="pv" jdbcType="BIGINT" property="pv" />
+    <result column="uv" jdbcType="BIGINT" property="uv" />
+    <result column="nuv" jdbcType="BIGINT" property="nuv" />
+    <result column="day_keep" jdbcType="BIGINT" property="dayKeep" />
+    <result column="three_day_keep" jdbcType="BIGINT" property="threeDayKeep" />
+    <result column="seven_day_keep" jdbcType="BIGINT" property="sevenDayKeep" />
+    <result column="active_rate" jdbcType="DECIMAL" property="activeRate" />
+    <result column="active_time" jdbcType="BIGINT" property="activeTime" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="CREATED_TIME" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="UPDATED_TIME" jdbcType="TIMESTAMP" property="updatedTime" />
+    <result column="age11" jdbcType="BIGINT" property="age11" />
+    <result column="age10" jdbcType="BIGINT" property="age10" />
+    <result column="age9" jdbcType="BIGINT" property="age9" />
+    <result column="age8" jdbcType="BIGINT" property="age8" />
+    <result column="age7" jdbcType="BIGINT" property="age7" />
+    <result column="age6" jdbcType="BIGINT" property="age6" />
+    <result column="age5" jdbcType="BIGINT" property="age5" />
+    <result column="age4" jdbcType="BIGINT" property="age4" />
+    <result column="age3" jdbcType="BIGINT" property="age3" />
+    <result column="age2" jdbcType="BIGINT" property="age2" />
+    <result column="age1" jdbcType="BIGINT" property="age1" />
+    <result column="ms" jdbcType="BIGINT" property="ms" />
+    <result column="mr" jdbcType="BIGINT" property="mr" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    draw_id, code, rank, trend, total_rank, total_trend, pv, uv, nuv, day_keep, three_day_keep, 
+    seven_day_keep, active_rate, active_time, CREATED_BY, CREATED_TIME, UPDATED_BY, UPDATED_TIME, 
+    age11, age10, age9, age8, age7, age6, age5, age4, age3, age2, age1, ms, mr
+  </sql>
+  <select id="selectByExample" parameterType="org.zsy.repository.model.AppUserDrawRegionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from app_user_draw_region
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_user_draw_region
+    where draw_id = #{drawId,jdbcType=VARCHAR}
+      and code = #{code,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from app_user_draw_region
+    where draw_id = #{drawId,jdbcType=VARCHAR}
+      and code = #{code,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.zsy.repository.model.AppUserDrawRegionExample">
+    delete from app_user_draw_region
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.zsy.repository.model.AppUserDrawRegion">
+    insert into app_user_draw_region (draw_id, code, rank, 
+      trend, total_rank, total_trend, 
+      pv, uv, nuv, day_keep, 
+      three_day_keep, seven_day_keep, active_rate, 
+      active_time, CREATED_BY, CREATED_TIME, 
+      UPDATED_BY, UPDATED_TIME, age11, 
+      age10, age9, age8, age7, 
+      age6, age5, age4, age3, 
+      age2, age1, ms, mr
+      )
+    values (#{drawId,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{rank,jdbcType=BIGINT}, 
+      #{trend,jdbcType=BIGINT}, #{totalRank,jdbcType=BIGINT}, #{totalTrend,jdbcType=BIGINT}, 
+      #{pv,jdbcType=BIGINT}, #{uv,jdbcType=BIGINT}, #{nuv,jdbcType=BIGINT}, #{dayKeep,jdbcType=BIGINT}, 
+      #{threeDayKeep,jdbcType=BIGINT}, #{sevenDayKeep,jdbcType=BIGINT}, #{activeRate,jdbcType=DECIMAL}, 
+      #{activeTime,jdbcType=BIGINT}, #{createdBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}, #{age11,jdbcType=BIGINT}, 
+      #{age10,jdbcType=BIGINT}, #{age9,jdbcType=BIGINT}, #{age8,jdbcType=BIGINT}, #{age7,jdbcType=BIGINT}, 
+      #{age6,jdbcType=BIGINT}, #{age5,jdbcType=BIGINT}, #{age4,jdbcType=BIGINT}, #{age3,jdbcType=BIGINT}, 
+      #{age2,jdbcType=BIGINT}, #{age1,jdbcType=BIGINT}, #{ms,jdbcType=BIGINT}, #{mr,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.zsy.repository.model.AppUserDrawRegion">
+    insert into app_user_draw_region
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="drawId != null">
+        draw_id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+      <if test="trend != null">
+        trend,
+      </if>
+      <if test="totalRank != null">
+        total_rank,
+      </if>
+      <if test="totalTrend != null">
+        total_trend,
+      </if>
+      <if test="pv != null">
+        pv,
+      </if>
+      <if test="uv != null">
+        uv,
+      </if>
+      <if test="nuv != null">
+        nuv,
+      </if>
+      <if test="dayKeep != null">
+        day_keep,
+      </if>
+      <if test="threeDayKeep != null">
+        three_day_keep,
+      </if>
+      <if test="sevenDayKeep != null">
+        seven_day_keep,
+      </if>
+      <if test="activeRate != null">
+        active_rate,
+      </if>
+      <if test="activeTime != null">
+        active_time,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME,
+      </if>
+      <if test="age11 != null">
+        age11,
+      </if>
+      <if test="age10 != null">
+        age10,
+      </if>
+      <if test="age9 != null">
+        age9,
+      </if>
+      <if test="age8 != null">
+        age8,
+      </if>
+      <if test="age7 != null">
+        age7,
+      </if>
+      <if test="age6 != null">
+        age6,
+      </if>
+      <if test="age5 != null">
+        age5,
+      </if>
+      <if test="age4 != null">
+        age4,
+      </if>
+      <if test="age3 != null">
+        age3,
+      </if>
+      <if test="age2 != null">
+        age2,
+      </if>
+      <if test="age1 != null">
+        age1,
+      </if>
+      <if test="ms != null">
+        ms,
+      </if>
+      <if test="mr != null">
+        mr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="drawId != null">
+        #{drawId,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=BIGINT},
+      </if>
+      <if test="trend != null">
+        #{trend,jdbcType=BIGINT},
+      </if>
+      <if test="totalRank != null">
+        #{totalRank,jdbcType=BIGINT},
+      </if>
+      <if test="totalTrend != null">
+        #{totalTrend,jdbcType=BIGINT},
+      </if>
+      <if test="pv != null">
+        #{pv,jdbcType=BIGINT},
+      </if>
+      <if test="uv != null">
+        #{uv,jdbcType=BIGINT},
+      </if>
+      <if test="nuv != null">
+        #{nuv,jdbcType=BIGINT},
+      </if>
+      <if test="dayKeep != null">
+        #{dayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="threeDayKeep != null">
+        #{threeDayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="sevenDayKeep != null">
+        #{sevenDayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="activeRate != null">
+        #{activeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="activeTime != null">
+        #{activeTime,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age11 != null">
+        #{age11,jdbcType=BIGINT},
+      </if>
+      <if test="age10 != null">
+        #{age10,jdbcType=BIGINT},
+      </if>
+      <if test="age9 != null">
+        #{age9,jdbcType=BIGINT},
+      </if>
+      <if test="age8 != null">
+        #{age8,jdbcType=BIGINT},
+      </if>
+      <if test="age7 != null">
+        #{age7,jdbcType=BIGINT},
+      </if>
+      <if test="age6 != null">
+        #{age6,jdbcType=BIGINT},
+      </if>
+      <if test="age5 != null">
+        #{age5,jdbcType=BIGINT},
+      </if>
+      <if test="age4 != null">
+        #{age4,jdbcType=BIGINT},
+      </if>
+      <if test="age3 != null">
+        #{age3,jdbcType=BIGINT},
+      </if>
+      <if test="age2 != null">
+        #{age2,jdbcType=BIGINT},
+      </if>
+      <if test="age1 != null">
+        #{age1,jdbcType=BIGINT},
+      </if>
+      <if test="ms != null">
+        #{ms,jdbcType=BIGINT},
+      </if>
+      <if test="mr != null">
+        #{mr,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.zsy.repository.model.AppUserDrawRegionExample" resultType="java.lang.Long">
+    select count(*) from app_user_draw_region
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update app_user_draw_region
+    <set>
+      <if test="record.drawId != null">
+        draw_id = #{record.drawId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rank != null">
+        rank = #{record.rank,jdbcType=BIGINT},
+      </if>
+      <if test="record.trend != null">
+        trend = #{record.trend,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalRank != null">
+        total_rank = #{record.totalRank,jdbcType=BIGINT},
+      </if>
+      <if test="record.totalTrend != null">
+        total_trend = #{record.totalTrend,jdbcType=BIGINT},
+      </if>
+      <if test="record.pv != null">
+        pv = #{record.pv,jdbcType=BIGINT},
+      </if>
+      <if test="record.uv != null">
+        uv = #{record.uv,jdbcType=BIGINT},
+      </if>
+      <if test="record.nuv != null">
+        nuv = #{record.nuv,jdbcType=BIGINT},
+      </if>
+      <if test="record.dayKeep != null">
+        day_keep = #{record.dayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="record.threeDayKeep != null">
+        three_day_keep = #{record.threeDayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="record.sevenDayKeep != null">
+        seven_day_keep = #{record.sevenDayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="record.activeRate != null">
+        active_rate = #{record.activeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="record.activeTime != null">
+        active_time = #{record.activeTime,jdbcType=BIGINT},
+      </if>
+      <if test="record.createdBy != null">
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null">
+        CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null">
+        UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedTime != null">
+        UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.age11 != null">
+        age11 = #{record.age11,jdbcType=BIGINT},
+      </if>
+      <if test="record.age10 != null">
+        age10 = #{record.age10,jdbcType=BIGINT},
+      </if>
+      <if test="record.age9 != null">
+        age9 = #{record.age9,jdbcType=BIGINT},
+      </if>
+      <if test="record.age8 != null">
+        age8 = #{record.age8,jdbcType=BIGINT},
+      </if>
+      <if test="record.age7 != null">
+        age7 = #{record.age7,jdbcType=BIGINT},
+      </if>
+      <if test="record.age6 != null">
+        age6 = #{record.age6,jdbcType=BIGINT},
+      </if>
+      <if test="record.age5 != null">
+        age5 = #{record.age5,jdbcType=BIGINT},
+      </if>
+      <if test="record.age4 != null">
+        age4 = #{record.age4,jdbcType=BIGINT},
+      </if>
+      <if test="record.age3 != null">
+        age3 = #{record.age3,jdbcType=BIGINT},
+      </if>
+      <if test="record.age2 != null">
+        age2 = #{record.age2,jdbcType=BIGINT},
+      </if>
+      <if test="record.age1 != null">
+        age1 = #{record.age1,jdbcType=BIGINT},
+      </if>
+      <if test="record.ms != null">
+        ms = #{record.ms,jdbcType=BIGINT},
+      </if>
+      <if test="record.mr != null">
+        mr = #{record.mr,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update app_user_draw_region
+    set draw_id = #{record.drawId,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      rank = #{record.rank,jdbcType=BIGINT},
+      trend = #{record.trend,jdbcType=BIGINT},
+      total_rank = #{record.totalRank,jdbcType=BIGINT},
+      total_trend = #{record.totalTrend,jdbcType=BIGINT},
+      pv = #{record.pv,jdbcType=BIGINT},
+      uv = #{record.uv,jdbcType=BIGINT},
+      nuv = #{record.nuv,jdbcType=BIGINT},
+      day_keep = #{record.dayKeep,jdbcType=BIGINT},
+      three_day_keep = #{record.threeDayKeep,jdbcType=BIGINT},
+      seven_day_keep = #{record.sevenDayKeep,jdbcType=BIGINT},
+      active_rate = #{record.activeRate,jdbcType=DECIMAL},
+      active_time = #{record.activeTime,jdbcType=BIGINT},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP},
+      age11 = #{record.age11,jdbcType=BIGINT},
+      age10 = #{record.age10,jdbcType=BIGINT},
+      age9 = #{record.age9,jdbcType=BIGINT},
+      age8 = #{record.age8,jdbcType=BIGINT},
+      age7 = #{record.age7,jdbcType=BIGINT},
+      age6 = #{record.age6,jdbcType=BIGINT},
+      age5 = #{record.age5,jdbcType=BIGINT},
+      age4 = #{record.age4,jdbcType=BIGINT},
+      age3 = #{record.age3,jdbcType=BIGINT},
+      age2 = #{record.age2,jdbcType=BIGINT},
+      age1 = #{record.age1,jdbcType=BIGINT},
+      ms = #{record.ms,jdbcType=BIGINT},
+      mr = #{record.mr,jdbcType=BIGINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.repository.model.AppUserDrawRegion">
+    update app_user_draw_region
+    <set>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=BIGINT},
+      </if>
+      <if test="trend != null">
+        trend = #{trend,jdbcType=BIGINT},
+      </if>
+      <if test="totalRank != null">
+        total_rank = #{totalRank,jdbcType=BIGINT},
+      </if>
+      <if test="totalTrend != null">
+        total_trend = #{totalTrend,jdbcType=BIGINT},
+      </if>
+      <if test="pv != null">
+        pv = #{pv,jdbcType=BIGINT},
+      </if>
+      <if test="uv != null">
+        uv = #{uv,jdbcType=BIGINT},
+      </if>
+      <if test="nuv != null">
+        nuv = #{nuv,jdbcType=BIGINT},
+      </if>
+      <if test="dayKeep != null">
+        day_keep = #{dayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="threeDayKeep != null">
+        three_day_keep = #{threeDayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="sevenDayKeep != null">
+        seven_day_keep = #{sevenDayKeep,jdbcType=BIGINT},
+      </if>
+      <if test="activeRate != null">
+        active_rate = #{activeRate,jdbcType=DECIMAL},
+      </if>
+      <if test="activeTime != null">
+        active_time = #{activeTime,jdbcType=BIGINT},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="age11 != null">
+        age11 = #{age11,jdbcType=BIGINT},
+      </if>
+      <if test="age10 != null">
+        age10 = #{age10,jdbcType=BIGINT},
+      </if>
+      <if test="age9 != null">
+        age9 = #{age9,jdbcType=BIGINT},
+      </if>
+      <if test="age8 != null">
+        age8 = #{age8,jdbcType=BIGINT},
+      </if>
+      <if test="age7 != null">
+        age7 = #{age7,jdbcType=BIGINT},
+      </if>
+      <if test="age6 != null">
+        age6 = #{age6,jdbcType=BIGINT},
+      </if>
+      <if test="age5 != null">
+        age5 = #{age5,jdbcType=BIGINT},
+      </if>
+      <if test="age4 != null">
+        age4 = #{age4,jdbcType=BIGINT},
+      </if>
+      <if test="age3 != null">
+        age3 = #{age3,jdbcType=BIGINT},
+      </if>
+      <if test="age2 != null">
+        age2 = #{age2,jdbcType=BIGINT},
+      </if>
+      <if test="age1 != null">
+        age1 = #{age1,jdbcType=BIGINT},
+      </if>
+      <if test="ms != null">
+        ms = #{ms,jdbcType=BIGINT},
+      </if>
+      <if test="mr != null">
+        mr = #{mr,jdbcType=BIGINT},
+      </if>
+    </set>
+    where draw_id = #{drawId,jdbcType=VARCHAR}
+      and code = #{code,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.zsy.repository.model.AppUserDrawRegion">
+    update app_user_draw_region
+    set rank = #{rank,jdbcType=BIGINT},
+      trend = #{trend,jdbcType=BIGINT},
+      total_rank = #{totalRank,jdbcType=BIGINT},
+      total_trend = #{totalTrend,jdbcType=BIGINT},
+      pv = #{pv,jdbcType=BIGINT},
+      uv = #{uv,jdbcType=BIGINT},
+      nuv = #{nuv,jdbcType=BIGINT},
+      day_keep = #{dayKeep,jdbcType=BIGINT},
+      three_day_keep = #{threeDayKeep,jdbcType=BIGINT},
+      seven_day_keep = #{sevenDayKeep,jdbcType=BIGINT},
+      active_rate = #{activeRate,jdbcType=DECIMAL},
+      active_time = #{activeTime,jdbcType=BIGINT},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP},
+      age11 = #{age11,jdbcType=BIGINT},
+      age10 = #{age10,jdbcType=BIGINT},
+      age9 = #{age9,jdbcType=BIGINT},
+      age8 = #{age8,jdbcType=BIGINT},
+      age7 = #{age7,jdbcType=BIGINT},
+      age6 = #{age6,jdbcType=BIGINT},
+      age5 = #{age5,jdbcType=BIGINT},
+      age4 = #{age4,jdbcType=BIGINT},
+      age3 = #{age3,jdbcType=BIGINT},
+      age2 = #{age2,jdbcType=BIGINT},
+      age1 = #{age1,jdbcType=BIGINT},
+      ms = #{ms,jdbcType=BIGINT},
+      mr = #{mr,jdbcType=BIGINT}
+    where draw_id = #{drawId,jdbcType=VARCHAR}
+      and code = #{code,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,5 +1,7 @@
 package org.zsy.utils;
 
+import java.math.BigInteger;
+
 /**
  * Zigzag编码
  * @author 张世一
@@ -30,13 +32,14 @@ public class ZigzagUtil {
     }
 
     public static void main(String[] args) {
-        String str = "89 93 34 40 32 34 95 5";
-        int n=899334;
-        System.out.println("原字符串：" + n);
-        int compress = int_to_zigzag(n);
-        System.out.println("压缩后字符串：" + compress);
-        int string = zigzag_to_int(compress);
-        System.out.println("解压缩后字符串：" + string);
+        String str = "850668 96 310004 0";
+        String n=new BigInteger(str,10).toString(32);
+        System.out.println(n);
+//        System.out.println("原字符串：" + n);
+//        int compress = int_to_zigzag(n);
+//        System.out.println("压缩后字符串：" + compress);
+//        int string = zigzag_to_int(compress);
+//        System.out.println("解压缩后字符串：" + string);
     }
 
 }

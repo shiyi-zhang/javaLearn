@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zsy.repository.mapper.TaskReportAgeSexMapper">
+  <resultMap id="BaseResultMap" type="org.zsy.repository.model.TaskReportAgeSex">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="app_id" jdbcType="VARCHAR" property="appId" />
+    <id column="get_time" jdbcType="DATE" property="getTime" />
+    <result column="mr" jdbcType="DECIMAL" property="mr" />
+    <result column="ms" jdbcType="DECIMAL" property="ms" />
+    <result column="age1" jdbcType="DECIMAL" property="age1" />
+    <result column="age2" jdbcType="DECIMAL" property="age2" />
+    <result column="age3" jdbcType="DECIMAL" property="age3" />
+    <result column="age4" jdbcType="DECIMAL" property="age4" />
+    <result column="age5" jdbcType="DECIMAL" property="age5" />
+    <result column="age6" jdbcType="DECIMAL" property="age6" />
+    <result column="age7" jdbcType="DECIMAL" property="age7" />
+    <result column="age8" jdbcType="DECIMAL" property="age8" />
+    <result column="age9" jdbcType="DECIMAL" property="age9" />
+    <result column="age10" jdbcType="DECIMAL" property="age10" />
+    <result column="age11" jdbcType="DECIMAL" property="age11" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="CREATED_TIME" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="UPDATED_TIME" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, app_id, get_time, mr, ms, age1, age2, age3, age4, age5, age6, age7, age8, age9, 
+    age10, age11, CREATED_BY, CREATED_TIME, UPDATED_BY, UPDATED_TIME
+  </sql>
+  <select id="selectByExample" parameterType="org.zsy.repository.model.TaskReportAgeSexExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from task_report_age_sex
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task_report_age_sex
+    where id = #{id,jdbcType=INTEGER}
+      and app_id = #{appId,jdbcType=VARCHAR}
+      and get_time = #{getTime,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from task_report_age_sex
+    where id = #{id,jdbcType=INTEGER}
+      and app_id = #{appId,jdbcType=VARCHAR}
+      and get_time = #{getTime,jdbcType=DATE}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.zsy.repository.model.TaskReportAgeSexExample">
+    delete from task_report_age_sex
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.zsy.repository.model.TaskReportAgeSex">
+    insert into task_report_age_sex (id, app_id, get_time, 
+      mr, ms, age1, age2, 
+      age3, age4, age5, age6, 
+      age7, age8, age9, age10, 
+      age11, CREATED_BY, CREATED_TIME, 
+      UPDATED_BY, UPDATED_TIME)
+    values (#{id,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{getTime,jdbcType=DATE}, 
+      #{mr,jdbcType=DECIMAL}, #{ms,jdbcType=DECIMAL}, #{age1,jdbcType=DECIMAL}, #{age2,jdbcType=DECIMAL}, 
+      #{age3,jdbcType=DECIMAL}, #{age4,jdbcType=DECIMAL}, #{age5,jdbcType=DECIMAL}, #{age6,jdbcType=DECIMAL}, 
+      #{age7,jdbcType=DECIMAL}, #{age8,jdbcType=DECIMAL}, #{age9,jdbcType=DECIMAL}, #{age10,jdbcType=DECIMAL}, 
+      #{age11,jdbcType=DECIMAL}, #{createdBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.zsy.repository.model.TaskReportAgeSex">
+    insert into task_report_age_sex
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="getTime != null">
+        get_time,
+      </if>
+      <if test="mr != null">
+        mr,
+      </if>
+      <if test="ms != null">
+        ms,
+      </if>
+      <if test="age1 != null">
+        age1,
+      </if>
+      <if test="age2 != null">
+        age2,
+      </if>
+      <if test="age3 != null">
+        age3,
+      </if>
+      <if test="age4 != null">
+        age4,
+      </if>
+      <if test="age5 != null">
+        age5,
+      </if>
+      <if test="age6 != null">
+        age6,
+      </if>
+      <if test="age7 != null">
+        age7,
+      </if>
+      <if test="age8 != null">
+        age8,
+      </if>
+      <if test="age9 != null">
+        age9,
+      </if>
+      <if test="age10 != null">
+        age10,
+      </if>
+      <if test="age11 != null">
+        age11,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="getTime != null">
+        #{getTime,jdbcType=DATE},
+      </if>
+      <if test="mr != null">
+        #{mr,jdbcType=DECIMAL},
+      </if>
+      <if test="ms != null">
+        #{ms,jdbcType=DECIMAL},
+      </if>
+      <if test="age1 != null">
+        #{age1,jdbcType=DECIMAL},
+      </if>
+      <if test="age2 != null">
+        #{age2,jdbcType=DECIMAL},
+      </if>
+      <if test="age3 != null">
+        #{age3,jdbcType=DECIMAL},
+      </if>
+      <if test="age4 != null">
+        #{age4,jdbcType=DECIMAL},
+      </if>
+      <if test="age5 != null">
+        #{age5,jdbcType=DECIMAL},
+      </if>
+      <if test="age6 != null">
+        #{age6,jdbcType=DECIMAL},
+      </if>
+      <if test="age7 != null">
+        #{age7,jdbcType=DECIMAL},
+      </if>
+      <if test="age8 != null">
+        #{age8,jdbcType=DECIMAL},
+      </if>
+      <if test="age9 != null">
+        #{age9,jdbcType=DECIMAL},
+      </if>
+      <if test="age10 != null">
+        #{age10,jdbcType=DECIMAL},
+      </if>
+      <if test="age11 != null">
+        #{age11,jdbcType=DECIMAL},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.zsy.repository.model.TaskReportAgeSexExample" resultType="java.lang.Long">
+    select count(*) from task_report_age_sex
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update task_report_age_sex
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.appId != null">
+        app_id = #{record.appId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.getTime != null">
+        get_time = #{record.getTime,jdbcType=DATE},
+      </if>
+      <if test="record.mr != null">
+        mr = #{record.mr,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ms != null">
+        ms = #{record.ms,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age1 != null">
+        age1 = #{record.age1,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age2 != null">
+        age2 = #{record.age2,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age3 != null">
+        age3 = #{record.age3,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age4 != null">
+        age4 = #{record.age4,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age5 != null">
+        age5 = #{record.age5,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age6 != null">
+        age6 = #{record.age6,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age7 != null">
+        age7 = #{record.age7,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age8 != null">
+        age8 = #{record.age8,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age9 != null">
+        age9 = #{record.age9,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age10 != null">
+        age10 = #{record.age10,jdbcType=DECIMAL},
+      </if>
+      <if test="record.age11 != null">
+        age11 = #{record.age11,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createdBy != null">
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null">
+        CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null">
+        UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedTime != null">
+        UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update task_report_age_sex
+    set id = #{record.id,jdbcType=INTEGER},
+      app_id = #{record.appId,jdbcType=VARCHAR},
+      get_time = #{record.getTime,jdbcType=DATE},
+      mr = #{record.mr,jdbcType=DECIMAL},
+      ms = #{record.ms,jdbcType=DECIMAL},
+      age1 = #{record.age1,jdbcType=DECIMAL},
+      age2 = #{record.age2,jdbcType=DECIMAL},
+      age3 = #{record.age3,jdbcType=DECIMAL},
+      age4 = #{record.age4,jdbcType=DECIMAL},
+      age5 = #{record.age5,jdbcType=DECIMAL},
+      age6 = #{record.age6,jdbcType=DECIMAL},
+      age7 = #{record.age7,jdbcType=DECIMAL},
+      age8 = #{record.age8,jdbcType=DECIMAL},
+      age9 = #{record.age9,jdbcType=DECIMAL},
+      age10 = #{record.age10,jdbcType=DECIMAL},
+      age11 = #{record.age11,jdbcType=DECIMAL},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.repository.model.TaskReportAgeSex">
+    update task_report_age_sex
+    <set>
+      <if test="mr != null">
+        mr = #{mr,jdbcType=DECIMAL},
+      </if>
+      <if test="ms != null">
+        ms = #{ms,jdbcType=DECIMAL},
+      </if>
+      <if test="age1 != null">
+        age1 = #{age1,jdbcType=DECIMAL},
+      </if>
+      <if test="age2 != null">
+        age2 = #{age2,jdbcType=DECIMAL},
+      </if>
+      <if test="age3 != null">
+        age3 = #{age3,jdbcType=DECIMAL},
+      </if>
+      <if test="age4 != null">
+        age4 = #{age4,jdbcType=DECIMAL},
+      </if>
+      <if test="age5 != null">
+        age5 = #{age5,jdbcType=DECIMAL},
+      </if>
+      <if test="age6 != null">
+        age6 = #{age6,jdbcType=DECIMAL},
+      </if>
+      <if test="age7 != null">
+        age7 = #{age7,jdbcType=DECIMAL},
+      </if>
+      <if test="age8 != null">
+        age8 = #{age8,jdbcType=DECIMAL},
+      </if>
+      <if test="age9 != null">
+        age9 = #{age9,jdbcType=DECIMAL},
+      </if>
+      <if test="age10 != null">
+        age10 = #{age10,jdbcType=DECIMAL},
+      </if>
+      <if test="age11 != null">
+        age11 = #{age11,jdbcType=DECIMAL},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and app_id = #{appId,jdbcType=VARCHAR}
+      and get_time = #{getTime,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.zsy.repository.model.TaskReportAgeSex">
+    update task_report_age_sex
+    set mr = #{mr,jdbcType=DECIMAL},
+      ms = #{ms,jdbcType=DECIMAL},
+      age1 = #{age1,jdbcType=DECIMAL},
+      age2 = #{age2,jdbcType=DECIMAL},
+      age3 = #{age3,jdbcType=DECIMAL},
+      age4 = #{age4,jdbcType=DECIMAL},
+      age5 = #{age5,jdbcType=DECIMAL},
+      age6 = #{age6,jdbcType=DECIMAL},
+      age7 = #{age7,jdbcType=DECIMAL},
+      age8 = #{age8,jdbcType=DECIMAL},
+      age9 = #{age9,jdbcType=DECIMAL},
+      age10 = #{age10,jdbcType=DECIMAL},
+      age11 = #{age11,jdbcType=DECIMAL},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+      and app_id = #{appId,jdbcType=VARCHAR}
+      and get_time = #{getTime,jdbcType=DATE}
+  </update>
+</mapper>

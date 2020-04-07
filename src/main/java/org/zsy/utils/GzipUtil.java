@@ -107,7 +107,6 @@ public class GzipUtil {
             }
         }
 
-
         return new sun.misc.BASE64Encoder().encode(out.toByteArray());
 
     }

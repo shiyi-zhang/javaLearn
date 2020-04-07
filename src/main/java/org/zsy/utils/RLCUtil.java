@@ -90,7 +90,7 @@ public class RLCUtil {
         System.out.println(rlcEncoding);
         String decoding = RLCDecoding(rlcEncoding,2);
         System.out.println(decoding);
-        System.out.println(str);
+//        System.out.println(str);
     }
 
 }

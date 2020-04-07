@@ -1,0 +1,826 @@
+TRUNCATE TABLE task_report_statistics_day;
+
+
+INSERT INTO `task_report_statistics_day` (`id`, `app_id`, `get_time`, `rank`, `trend`, `total_rank`, `total_trend`, `pv`, `uv`, `nuv`, `day_keep`, `three_day_keep`, `seven_day_keep`, `active_rate`, `active_time`, `download`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+        (SELECT '1',
+            id,
+            `get_time`,
+            `rank`,
+            `trend`,
+            `total_rank`,
+            `total_trend`,
+            `pv`,
+            `uv`,
+            `nuv`,
+            `day_keep`,
+            `three_day_keep`,
+            `seven_day_keep`,
+            `active_rate`,
+            `active_time`,
+            `download`,
+            `created_by`,
+            `created_time`,
+            `updated_by`,
+            `updated_time`
+          FROM `app_statistics_day`
+          WHERE id IN ('1',
+                                      '2',
+                                      '3'));
+
+
+INSERT INTO `task_report_statistics_day` (`id`, `app_id`, `get_time`, `rank`, `trend`, `total_rank`, `total_trend`, `pv`, `uv`, `nuv`, `day_keep`, `three_day_keep`, `seven_day_keep`, `active_rate`, `active_time`, `download`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+        (SELECT '2',
+            id,
+            `get_time`,
+            `rank`,
+            `trend`,
+            `total_rank`,
+            `total_trend`,
+            `pv`,
+            `uv`,
+            `nuv`,
+            `day_keep`,
+            `three_day_keep`,
+            `seven_day_keep`,
+            `active_rate`,
+            `active_time`,
+            `download`,
+            `created_by`,
+            `created_time`,
+            `updated_by`,
+            `updated_time`
+          FROM `app_statistics_day`
+          WHERE id IN ('2'));
+
+
+INSERT INTO `task_report_statistics_day` (`id`, `app_id`, `get_time`, `rank`, `trend`, `total_rank`, `total_trend`, `pv`, `uv`, `nuv`, `day_keep`, `three_day_keep`, `seven_day_keep`, `active_rate`, `active_time`, `download`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+        (SELECT '3',
+            id,
+            `get_time`,
+            `rank`,
+            `trend`,
+            `total_rank`,
+            `total_trend`,
+            `pv`,
+            `uv`,
+            `nuv`,
+            `day_keep`,
+            `three_day_keep`,
+            `seven_day_keep`,
+            `active_rate`,
+            `active_time`,
+            `download`,
+            `created_by`,
+            `created_time`,
+            `updated_by`,
+            `updated_time`
+          FROM `app_statistics_day`
+          WHERE id IN ('3'));
+
+TRUNCATE TABLE task_report_statistics_month;
+
+
+INSERT INTO `task_report_statistics_month` (`id`, `app_id`, `get_time`, `rank`, `trend`, `total_rank`, `total_trend`, `pv`, `uv`, `nuv`, `keep`, `active_rate`, `month_active_time`, `month_active_time_grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+        (SELECT '1',
+            `id`,
+            `get_time`,
+            `rank`,
+            `trend`,
+            `total_rank`,
+            `total_trend`,
+            `pv`,
+            `uv`,
+            `nuv`,
+            `keep`,
+            `active_rate`,
+            `month_active_time`,
+            `month_active_time_grow`,
+            `created_by`,
+            `created_time`,
+            `updated_by`,
+            `updated_time`
+          FROM `app_statistics_month`
+          WHERE id IN ('1',
+                                      '2',
+                                      '3'));
+
+
+INSERT INTO `task_report_statistics_month` (`id`, `app_id`, `get_time`, `rank`, `trend`, `total_rank`, `total_trend`, `pv`, `uv`, `nuv`, `keep`, `active_rate`, `month_active_time`, `month_active_time_grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+        (SELECT '2',
+            `id`,
+            `get_time`,
+            `rank`,
+            `trend`,
+            `total_rank`,
+            `total_trend`,
+            `pv`,
+            `uv`,
+            `nuv`,
+            `keep`,
+            `active_rate`,
+            `month_active_time`,
+            `month_active_time_grow`,
+            `created_by`,
+            `created_time`,
+            `updated_by`,
+            `updated_time`
+          FROM `app_statistics_month`
+          WHERE id IN ('2'));
+
+
+INSERT INTO `task_report_statistics_month` (`id`, `app_id`, `get_time`, `rank`, `trend`, `total_rank`, `total_trend`, `pv`, `uv`, `nuv`, `keep`, `active_rate`, `month_active_time`, `month_active_time_grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+        (SELECT '3',
+            `id`,
+            `get_time`,
+            `rank`,
+            `trend`,
+            `total_rank`,
+            `total_trend`,
+            `pv`,
+            `uv`,
+            `nuv`,
+            `keep`,
+            `active_rate`,
+            `month_active_time`,
+            `month_active_time_grow`,
+            `created_by`,
+            `created_time`,
+            `updated_by`,
+            `updated_time`
+          FROM `app_statistics_month`
+          WHERE id IN ('3'));
+
+TRUNCATE TABLE task_report_age_sex;
+
+
+INSERT INTO `ma`.`task_report_age_sex` (`id`, `app_id`, `get_time`, `mr`, `ms`, `age1`, `age2`, `age3`, `age4`, `age5`, `age6`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+SELECT '1',
+  `app_id`,
+  `get_time`,
+  `mr`,
+  `ms`,
+  `age1`,
+  `age2`,
+  `age3`,
+  `age4`,
+  `age5`,
+  `age6`,
+  `created_by`,
+  `created_time`,
+  `updated_by`,
+  `updated_time`
+FROM `ma`.`app_user_draw`
+WHERE app_id IN ('1',
+                                    '2',
+                                    '3');
+
+
+INSERT INTO `ma`.`task_report_age_sex` (`id`, `app_id`, `get_time`, `mr`, `ms`, `age1`, `age2`, `age3`, `age4`, `age5`, `age6`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+SELECT '2',
+  `app_id`,
+  `get_time`,
+  `mr`,
+  `ms`,
+  `age1`,
+  `age2`,
+  `age3`,
+  `age4`,
+  `age5`,
+  `age6`,
+  `created_by`,
+  `created_time`,
+  `updated_by`,
+  `updated_time`
+FROM `ma`.`app_user_draw`
+WHERE app_id IN ('2');
+
+
+INSERT INTO `ma`.`task_report_age_sex` (`id`, `app_id`, `get_time`, `mr`, `ms`, `age1`, `age2`, `age3`, `age4`, `age5`, `age6`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+SELECT '3',
+  `app_id`,
+  `get_time`,
+  `mr`,
+  `ms`,
+  `age1`,
+  `age2`,
+  `age3`,
+  `age4`,
+  `age5`,
+  `age6`,
+  `created_by`,
+  `created_time`,
+  `updated_by`,
+  `updated_time`
+FROM `ma`.`app_user_draw`
+WHERE app_id IN ('3');
+
+TRUNCATE TABLE task_report_interest;
+
+
+INSERT task_report_interest (id,app_id,code,grow)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_interest t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3');
+
+
+INSERT task_report_interest (id,app_id,code,grow)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_interest t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2');
+
+
+INSERT task_report_interest (id,app_id,code,grow)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_interest t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3');
+
+TRUNCATE TABLE task_report_media_time;
+
+
+INSERT task_report_media_time (id,app_id,code,grow,pv,uv,active_time)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow,
+  t.pv,
+  t.uv,
+  t.active_time
+FROM app_user_draw_media_time t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3');
+
+
+INSERT task_report_media_time (id,app_id,code,grow,pv,uv,active_time)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow,
+  t.pv,
+  t.uv,
+  t.active_time
+FROM app_user_draw_media_time t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2');
+
+
+INSERT task_report_media_time (id,app_id,code,grow,pv,uv,active_time)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow,
+  t.pv,
+  t.uv,
+  t.active_time
+FROM app_user_draw_media_time t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3');
+
+TRUNCATE TABLE task_report_brand_rate;
+
+
+INSERT task_report_brand_rate (id,app_id,code,grow)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_brand_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3');
+
+
+INSERT task_report_brand_rate (id,app_id,code,grow)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_brand_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2');
+
+
+INSERT task_report_brand_rate (id,app_id,code,grow)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_brand_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3');
+
+TRUNCATE TABLE task_report_media_hot;
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '1',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '1',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '1',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '2',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '2',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '2',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '3',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '3',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (1,
+                  '3',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '1',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '1',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '1',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '2',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '2',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '2',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '3',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '3',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (2,
+                  '3',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '1',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '1',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '1',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '2',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '2',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '2',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '3',
+                  '2',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '3',
+                  '3',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+
+INSERT INTO `task_report_media_hot` (`id`, `app_id`, `hot_app_id`, `grow`, `created_by`, `created_time`, `updated_by`, `updated_time`)
+VALUES (3,
+                  '3',
+                  '4',
+                  1.00,
+                  NULL,
+                  NULL,
+                  NULL,
+                  NULL);
+
+TRUNCATE TABLE task_report_region_rate;
+
+
+INSERT task_report_region_rate (id,app_id,code,grow,TYPE)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow,
+  t.type
+FROM app_user_draw_region_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3')
+GROUP BY t1.app_id,
+  t.type,
+  t.code;
+
+
+INSERT task_report_region_rate (id,app_id,code,grow,TYPE)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow,
+  t.type
+FROM app_user_draw_region_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2')
+GROUP BY t1.app_id,
+  t.type,
+  t.code;
+
+
+INSERT task_report_region_rate (id,app_id,code,grow,TYPE)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow,
+  t.type
+FROM app_user_draw_region_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3')
+GROUP BY t1.app_id,
+  t.type,
+  t.code;
+
+TRUNCATE TABLE task_report_consume;
+
+
+INSERT task_report_consume (id,app_id,code,grow)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_consume t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3') ;
+
+
+INSERT task_report_consume (id,app_id,code,grow)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_consume t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2') ;
+
+
+INSERT task_report_consume (id,app_id,code,grow)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_consume t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3') ;
+
+TRUNCATE TABLE task_report_credit_rate;
+
+
+INSERT task_report_credit_rate (id,app_id,code,grow)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_credit_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3') ;
+
+
+INSERT task_report_credit_rate (id,app_id,code,grow)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_credit_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2') ;
+
+
+INSERT task_report_credit_rate (id,app_id,code,grow)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_credit_rate t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3') ;
+
+TRUNCATE TABLE task_report_app_preferences;
+
+
+INSERT task_report_app_preferences (id,app_id,code,grow)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_app_preferences t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3') ;
+
+
+INSERT task_report_app_preferences (id,app_id,code,grow)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_app_preferences t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2') ;
+
+
+INSERT task_report_app_preferences (id,app_id,code,grow)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_app_preferences t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3') ;
+
+TRUNCATE TABLE task_report_system;
+
+
+INSERT task_report_system (id,app_id,code,grow)
+SELECT '1',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_system t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('1',
+                                          '2',
+                                          '3') ;
+
+
+INSERT task_report_system (id,app_id,code,grow)
+SELECT '2',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_system t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('2') ;
+
+
+INSERT task_report_system (id,app_id,code,grow)
+SELECT '3',
+  t1.app_id,
+  t.code,
+  t.grow
+FROM app_user_draw_system t
+LEFT JOIN app_user_draw t1 ON t.draw_id=t1.id
+WHERE t1.app_id IN ('3') ;
+
+TRUNCATE TABLE task_report_consume_app;
+
+INSERT INTO `task_report_consume_app` (`id`, `app_id`, `consume_app_id`, `grow`, `CREATED_BY`, `CREATED_TIME`, `UPDATED_BY`, `UPDATED_TIME`) VALUES 
+  (1,'1','2',33.00,NULL,NULL,NULL,NULL),
+  (1,'2','2',33.00,NULL,NULL,NULL,NULL),
+  (1,'3','2',33.00,NULL,NULL,NULL,NULL),
+  (1,'1','3',44.00,NULL,NULL,NULL,NULL),
+  (1,'2','3',44.00,NULL,NULL,NULL,NULL),
+  (1,'3','3',44.00,NULL,NULL,NULL,NULL),
+  (1,'1','4',55.00,NULL,NULL,NULL,NULL),
+  (1,'2','4',55.00,NULL,NULL,NULL,NULL),
+  (1,'3','4',55.00,NULL,NULL,NULL,NULL),
+  (2,'2','2',33.00,NULL,NULL,NULL,NULL),
+  (2,'2','3',44.00,NULL,NULL,NULL,NULL),
+  (2,'2','4',55.00,NULL,NULL,NULL,NULL),
+  (3,'3','2',33.00,NULL,NULL,NULL,NULL),
+  (3,'3','3',44.00,NULL,NULL,NULL,NULL),
+  (3,'3','4',55.00,NULL,NULL,NULL,NULL);

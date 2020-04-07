@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zsy.repository.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="org.zsy.repository.model.User">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <id column="username" jdbcType="VARCHAR" property="username" />
+    <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="contact" jdbcType="VARCHAR" property="contact" />
+    <result column="iphone" jdbcType="VARCHAR" property="iphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="authority" jdbcType="CHAR" property="authority" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="CREATED_TIME" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="UPDATED_TIME" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, username, passwd, address, company, contact, iphone, email, authority, del_flag, 
+    CREATED_BY, CREATED_TIME, UPDATED_BY, UPDATED_TIME
+  </sql>
+  <select id="selectByExample" parameterType="org.zsy.repository.model.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from user
+    where id = #{id,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.zsy.repository.model.UserExample">
+    delete from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.zsy.repository.model.User">
+    insert into user (id, username, passwd, 
+      address, company, contact, 
+      iphone, email, authority, 
+      del_flag, CREATED_BY, CREATED_TIME, 
+      UPDATED_BY, UPDATED_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{iphone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{authority,jdbcType=CHAR}, 
+      #{delFlag,jdbcType=CHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.zsy.repository.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="passwd != null">
+        passwd,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="contact != null">
+        contact,
+      </if>
+      <if test="iphone != null">
+        iphone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="authority != null">
+        authority,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="iphone != null">
+        #{iphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="authority != null">
+        #{authority,jdbcType=CHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.zsy.repository.model.UserExample" resultType="java.lang.Long">
+    select count(*) from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.passwd != null">
+        passwd = #{record.passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.company != null">
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contact != null">
+        contact = #{record.contact,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iphone != null">
+        iphone = #{record.iphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authority != null">
+        authority = #{record.authority,jdbcType=CHAR},
+      </if>
+      <if test="record.delFlag != null">
+        del_flag = #{record.delFlag,jdbcType=CHAR},
+      </if>
+      <if test="record.createdBy != null">
+        CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null">
+        CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null">
+        UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedTime != null">
+        UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user
+    set id = #{record.id,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      passwd = #{record.passwd,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      company = #{record.company,jdbcType=VARCHAR},
+      contact = #{record.contact,jdbcType=VARCHAR},
+      iphone = #{record.iphone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      authority = #{record.authority,jdbcType=CHAR},
+      del_flag = #{record.delFlag,jdbcType=CHAR},
+      CREATED_BY = #{record.createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{record.createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{record.updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{record.updatedTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.zsy.repository.model.User">
+    update user
+    <set>
+      <if test="passwd != null">
+        passwd = #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="iphone != null">
+        iphone = #{iphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="authority != null">
+        authority = #{authority,jdbcType=CHAR},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.zsy.repository.model.User">
+    update user
+    set passwd = #{passwd,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      iphone = #{iphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      authority = #{authority,jdbcType=CHAR},
+      del_flag = #{delFlag,jdbcType=CHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_TIME = #{createdTime,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_TIME = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
+      and username = #{username,jdbcType=VARCHAR}
+  </update>
+</mapper>
